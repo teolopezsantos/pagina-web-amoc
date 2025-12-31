@@ -12,7 +12,7 @@
         }
         
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Montserrat', Arial, sans-serif;
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: #fff;
             line-height: 1.6;
@@ -54,19 +54,25 @@
             color: #fff;
         }
         
+        .images-section {
+            text-align: center;
+        }
+        
         .images-section img {
             width: 100%;
             max-width: 600px;
             height: auto;
             border-radius: 8px;
-            margin: 1rem 0;
+            margin: 1rem auto;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
             display: block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
         
         .images-section img:hover {
             transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
         }
         
         .text-section input {
@@ -105,8 +111,9 @@
             max-width: 800px;
             height: auto;
             border-radius: 8px;
-            margin: 1.5rem 0;
+            margin: 1.5rem auto;
             display: block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
         
         .info-section p {
@@ -140,9 +147,17 @@
     </header>
     <main>
         <section class="images-section">
-            <h2>Imágenes interactivas</h2>
-            <img src="https://oceanservice.noaa.gov/facts/amoc-960.jpg" alt="Diagrama de la circulación AMOC mostrando corrientes cálidas y frías" class="clickable" id="img1">
-            <img src="https://climate.metoffice.cloud/img/AMOC_schematic.svg" alt="Esquema de la Circulación Meridional del Atlántico" class="clickable" id="img2">
+            <h2>Imágenes sobre la AMOC</h2>
+            <img src="https://www.climate.gov/sites/default/files/styles/full_width_620_original_image/public/2023-07/ClimateGov_AMOC_1600px.jpg" 
+                 alt="Diagrama de la circulación AMOC" 
+                 class="clickable" 
+                 id="img1"
+                 data-alt-src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Thermohaline_Circulation_2.png/800px-Thermohaline_Circulation_2.png">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Antarctic_bottom_water_hg.png/800px-Antarctic_bottom_water_hg.png" 
+                 alt="Corrientes oceánicas globales" 
+                 class="clickable" 
+                 id="img2"
+                 data-alt-src="https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/weather/atmosphere/ocean-circulation.jpg">
         </section>
         <section class="text-section">
             <h2>Interacción con el texto</h2>
@@ -156,7 +171,8 @@
         <section class="info-section">
             <h2>¿Qué es la AMOC y qué está ocurriendo con ella?</h2>
             <p>La AMOC es un sistema de corrientes marinas que se ocupa de regular la temperatura en la Tierra. Debido al calentamiento global esta se está debilitando y se está intentando prevenir su desaparición con reuniones como "La cumbre del Clima en Paris" o "El protocolo de Kyoto". Ambos, a pesar de tener las ideas claras, no se pudieron cumplir debido a la gran ambición de los objetivos propuestos. Su desaparición tendría consecuencias inimaginables para casi todo ser vivo que habita en la Tierra, ya que cambiarían todos los ecosistemas que conocemos y muchos seres vivos no serían capaces de adaptarse.</p>
-            <img src="https://www.aoml.noaa.gov/wp-content/uploads/2024/04/amoc_schematic_chidichimo_2023-1024x729.png" alt="Esquema conceptual de la AMOC mostrando circulación de agua superficial y profunda">
+            <img src="https://cdn.britannica.com/10/94110-050-3D6F804D/ocean-conveyor-belt-heat-water-equator-poles.jpg" 
+                 alt="Esquema conceptual de la cinta transportadora oceánica global">
             <p>Para aprender más, visita <a href="https://www.climate.gov" target="_blank" title="Ir a Climate.gov">Climate.gov</a> o <a href="https://oceanservice.noaa.gov/facts/amoc.html" target="_blank">NOAA Ocean Service</a></p>
         </section>
     </main>
@@ -164,6 +180,7 @@
         <p>© 2025 - Licencia CC BY-SA 4.0</p>
     </footer>
     <script>
+        // Funcionalidad de texto dinámico
         const userInput = document.getElementById('user-input');
         const dynamicText = document.getElementById('dynamic-text');
         
@@ -175,10 +192,24 @@
             }
         });
         
-        const images = document.querySelectorAll('.clickable');
-        images.forEach(img => {
+        // Funcionalidad de intercambio de imágenes al hacer clic
+        const clickableImages = document.querySelectorAll('.clickable');
+        
+        clickableImages.forEach(img => {
             img.addEventListener('click', function() {
-                alert('¡Has hecho clic en la imagen sobre la AMOC!');
+                // Guardar la fuente actual
+                const currentSrc = this.src;
+                const altSrc = this.getAttribute('data-alt-src');
+                
+                // Intercambiar las fuentes
+                this.src = altSrc;
+                this.setAttribute('data-alt-src', currentSrc);
+                
+                // Efecto visual de intercambio
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
             });
         });
     </script>
