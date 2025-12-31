@@ -4,45 +4,183 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Posible colapso de la AMOC</title>
-    <link rel="stylesheet" href="styles/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        header {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        .images-section img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 8px;
+            margin: 1rem 0;
+            cursor: pointer;
+            transition: transform 0.3s;
+            display: block;
+        }
+        
+        .images-section img:hover {
+            transform: scale(1.05);
+        }
+        
+        .text-section input {
+            width: 100%;
+            padding: 0.8rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: none;
+            margin-top: 1rem;
+        }
+        
+        #dynamic-text {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .moving-object-section {
+            position: relative;
+            height: 150px;
+            overflow: hidden;
+        }
+        
+        #moving-object {
+            font-size: 3rem;
+            position: absolute;
+            animation: moveWave 5s linear infinite;
+        }
+        
+        @keyframes moveWave {
+            0% { left: -50px; }
+            100% { left: 100%; }
+        }
+        
+        .info-section img {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            display: block;
+        }
+        
+        .info-section p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+        
+        .info-section a {
+            color: #4fc3f7;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .info-section a:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.5);
+            margin-top: 2rem;
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>El posible colapso de la AMOC</h1>
         <p>Un vistazo al cambio climático y sus efectos en la circulación oceánica</p>
     </header>
-
     <main>
         <section class="images-section">
             <h2>Imágenes interactivas</h2>
-            <img src="images/amoc1.jpg" alt="AMOC Imagen 1" class="clickable" id="img1">
-            <img src="images/amoc2.jpg" alt="AMOC Imagen 2" class="clickable" id="img2">
+            <img src="https://oceanservice.noaa.gov/facts/amoc-960.jpg" alt="Diagrama de la circulación AMOC mostrando corrientes cálidas y frías" class="clickable" id="img1">
+            <img src="https://climate.metoffice.cloud/img/AMOC_schematic.svg" alt="Esquema de la Circulación Meridional del Atlántico" class="clickable" id="img2">
         </section>
-
         <section class="text-section">
             <h2>Interacción con el texto</h2>
             <p id="dynamic-text">Escribe algo en el campo y verás cómo cambia este texto:</p>
             <input type="text" id="user-input" placeholder="Escribe aquí...">
         </section>
-
         <section class="moving-object-section">
             <h2>Objeto en movimiento</h2>
             <div id="moving-object">🌊</div>
         </section>
-
         <section class="info-section">
-            <h2>¿Qué es la AMOC y que esta ocurriendo con ella?</h2>
-            <p>La AMOC es un sistema de corrientes marinas que se ocupa de regular la temperatura en la Tierra. Debido al calentamiento global esta se está debilitando y se está intentando prevenir su desaparición con reuniones como "La cumbre del Clima en Paris" o "El protocolo de Kyoto". Ambos, a pesar de tener las ideas claras, no se pudieron cumplir debido a la gran ambicion de los objetivos propuestos. Su desaparición tendria consecuencias inimaginables para casi todo ser vivo que habita en la Tierra, ya que cambiarían todos los ecosistemas que conocemos y muchos seres vivos no serían capaces de adaptarse.</p>
-            <img src="images/amoc3.jpg" alt="AMOC Conceptual">
-            <p>Para aprender más, visita <a href="https://www.climate.gov" target="_blank" title="Ir a Climate.gov">Climate.gov</a></p>
+            <h2>¿Qué es la AMOC y qué está ocurriendo con ella?</h2>
+            <p>La AMOC es un sistema de corrientes marinas que se ocupa de regular la temperatura en la Tierra. Debido al calentamiento global esta se está debilitando y se está intentando prevenir su desaparición con reuniones como "La cumbre del Clima en Paris" o "El protocolo de Kyoto". Ambos, a pesar de tener las ideas claras, no se pudieron cumplir debido a la gran ambición de los objetivos propuestos. Su desaparición tendría consecuencias inimaginables para casi todo ser vivo que habita en la Tierra, ya que cambiarían todos los ecosistemas que conocemos y muchos seres vivos no serían capaces de adaptarse.</p>
+            <img src="https://www.aoml.noaa.gov/wp-content/uploads/2024/04/amoc_schematic_chidichimo_2023-1024x729.png" alt="Esquema conceptual de la AMOC mostrando circulación de agua superficial y profunda">
+            <p>Para aprender más, visita <a href="https://www.climate.gov" target="_blank" title="Ir a Climate.gov">Climate.gov</a> o <a href="https://oceanservice.noaa.gov/facts/amoc.html" target="_blank">NOAA Ocean Service</a></p>
         </section>
     </main>
-
     <footer>
         <p>© 2025 - Licencia CC BY-SA 4.0</p>
     </footer>
-
-    <script src="scripts/script.js"></script>
+    <script>
+        const userInput = document.getElementById('user-input');
+        const dynamicText = document.getElementById('dynamic-text');
+        
+        userInput.addEventListener('input', function() {
+            if (this.value.trim() === '') {
+                dynamicText.textContent = 'Escribe algo en el campo y verás cómo cambia este texto:';
+            } else {
+                dynamicText.textContent = 'Has escrito: ' + this.value;
+            }
+        });
+        
+        const images = document.querySelectorAll('.clickable');
+        images.forEach(img => {
+            img.addEventListener('click', function() {
+                alert('¡Has hecho clic en la imagen sobre la AMOC!');
+            });
+        });
+    </script>
 </body>
 </html>
